@@ -1,0 +1,26 @@
+version: "3"
+services:
+  client:
+    container_name: awesome_client
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    image: shailesh/awesome_client
+    env_file:
+      - client/.env
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./client:/usr/src/app
+  server:
+    container_name: awesome_server
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    image: shailesh/awesome_server
+    env_file:
+      - server/.env
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./server:/usr/src/app
