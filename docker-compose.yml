@@ -12,6 +12,8 @@ services:
       - "5173:5173"
     volumes:
       - ./client:/usr/src/app
+    depends_on:
+      - server
   server:
     container_name: awesome_server
     build:

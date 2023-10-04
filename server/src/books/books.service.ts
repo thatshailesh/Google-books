@@ -33,9 +33,12 @@ export class BooksService {
             }
             return authorMap;
         }, {})
-        const mostCommonAuthor = Object.keys(authors).reduce(
-            (a, b) =>authors[a] > authors[b] ? a : b
-        )
+        let mostCommonAuthor = "N/A"
+        if (Object.keys(authors).length > 0) {
+            mostCommonAuthor = Object.keys(authors).reduce(
+                (a, b) =>authors[a] > authors[b] ? a : b
+            )
+        }
         const publicationDates = items.map(item => item.volumeInfo.publishedDate).filter(Boolean)
         const [earliestDate, mostRecentDate] = publicationDates
         .map(dateString => new Date(dateString))

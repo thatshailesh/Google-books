@@ -71,7 +71,7 @@ export default function Books() {
         // Toggle the expanded state of the clicked item
         setExpandedItem(prevItem => (prevItem === itemId ? null : itemId));
     };
-
+    const isSearchDisabled = query === ''
     return (
         <div className={styles.container}>
           <h1>Google Books Search</h1>
@@ -87,7 +87,7 @@ export default function Books() {
                 <option value={10}>10</option>
                 <option value={20}>20</option>
             </select>
-            <button onClick={searchBooks}>Search</button>
+            <button onClick={searchBooks} disabled={isSearchDisabled}>Search</button>
           </div>
             {error ? ( // Display error message if error exists
                 <div className={`${styles.error}`}>
@@ -113,11 +113,6 @@ export default function Books() {
                                     </p>
                                 ) : null
                             }
-                        {/* {book.volumeInfo.description ? (
-                        <p className={styles.description}>{book.volumeInfo.description}</p>
-                        ) : (
-                        <p className={styles.description}>No description available.</p>
-                        )} */}
                     </div>
                     ))}
                 </div>
